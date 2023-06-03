@@ -11,6 +11,48 @@ import {
   UserSwitch,
 } from '@phosphor-icons/react'
 
+const sections = [
+  {
+    title: 'CONTA',
+    items: [
+      {
+        icon: <UserCircle />,
+        title: 'Dados pessoais',
+      },
+      {
+        icon: <Key />,
+        title: 'Informações de login',
+      },
+    ],
+  },
+  {
+    title: 'PREFERÊNCIAS',
+    items: [
+      {
+        icon: <Bell />,
+        title: 'Notificações',
+      },
+      {
+        icon: <PersonArmsSpread />,
+        title: 'Acessibilidade',
+      },
+    ],
+  },
+  {
+    title: 'PRIVACIDADE',
+    items: [
+      {
+        icon: <Devices />,
+        title: 'Aparelhos conectados',
+      },
+      {
+        icon: <UserSwitch />,
+        title: 'Contas vinculadas',
+      },
+    ],
+  },
+]
+
 export function App() {
   return (
     <main className="flex items-center justify-center h-screen px-4">
@@ -26,63 +68,31 @@ export function App() {
             </span>
           </div>
         </header>
-        <section className="mx-6 pt-4 mb-4 border-t border-gray-400">
-          <strong className="text-gray-300 text-xs tracking-wider font-normal mb-3 block">
-            CONTA
-          </strong>
-          <a href="#" className="flex gap-2 items-center h-9">
-            <UserCircle className="text-gray-100 h-[20px] w-[20px]" />
-            <span className="text-gray-100 text-base leading-5">
-              Dados pessoais
-            </span>
-            <CaretRight className="ml-auto text-gray-300 h-[11px] w-[11px]" />
-          </a>
-          <a href="#" className="flex gap-2 items-center h-9">
-            <Key className="text-gray-100 h-[20px] w-[20px]" />
-            <span className="text-gray-100 text-base leading-5">
-              Informações de login
-            </span>
-            <CaretRight className="ml-auto text-gray-300 h-[11px] w-[11px]" />
-          </a>
-        </section>
-        <section className="mx-6 pt-4 mb-4 border-t border-gray-400">
-          <strong className="text-gray-300 text-xs tracking-wider font-normal mb-3 block">
-            PREFERÊNCIAS
-          </strong>
-          <a href="#" className="flex gap-2 items-center h-9">
-            <Bell className="text-gray-100 h-[20px] w-[20px]" />
-            <span className="text-gray-100 text-base leading-5">
-              Notificações
-            </span>
-            <CaretRight className="ml-auto text-gray-300 h-[11px] w-[11px]" />
-          </a>
-          <a href="#" className="flex gap-2 items-center h-9">
-            <PersonArmsSpread className="text-gray-100 h-[20px] w-[20px]" />
-            <span className="text-gray-100 text-base leading-5">
-              Acessibilidade
-            </span>
-            <CaretRight className="ml-auto text-gray-300 h-[11px] w-[11px]" />
-          </a>
-        </section>
-        <section className="mx-6 pt-4 mb-4 border-t border-gray-400">
-          <strong className="text-gray-300 text-xs tracking-wider font-normal mb-3 block">
-            PRIVACIDADE
-          </strong>
-          <a href="#" className="flex gap-2 items-center h-9">
-            <Devices className="text-gray-100 h-[20px] w-[20px]" />
-            <span className="text-gray-100 text-base leading-5">
-              Aparelhos conectados
-            </span>
-            <CaretRight className="ml-auto text-gray-300 h-[11px] w-[11px]" />
-          </a>
-          <a href="#" className="flex gap-2 items-center h-9">
-            <UserSwitch className="text-gray-100 h-[20px] w-[20px]" />
-            <span className="text-gray-100 text-base leading-5">
-              Contas vinculadas
-            </span>
-            <CaretRight className="ml-auto text-gray-300 h-[11px] w-[11px]" />
-          </a>
-        </section>
+
+        {sections.map((section) => (
+          <section
+            key={section.title}
+            className="mx-6 pt-4 mb-4 border-t border-gray-400"
+          >
+            <strong className="text-gray-300 text-xs tracking-wider font-normal mb-3 block">
+              {section.title}
+            </strong>
+            {section.items.map((item) => (
+              <a
+                key={item.title}
+                href="#"
+                className="flex gap-2 items-center h-9"
+              >
+                {item.icon}
+                <span className="text-gray-100 text-base leading-5">
+                  {item.title}
+                </span>
+                <CaretRight className="ml-auto text-gray-300 h-[11px] w-[11px]" />
+              </a>
+            ))}
+          </section>
+        ))}
+
         <footer className="mx-6 pt-4 mb-4 border-t border-gray-400">
           <a href="#" className="flex gap-2 items-center h-9">
             <Question className="text-gray-100 h-[20px] w-[20px]" />
